@@ -1,0 +1,3 @@
+Volg je favoriete voetbalteams en automatiseer je huis rondom wedstrijdmomenten. Voeg je team toe als apparaat en Homey houdt je op de hoogte met live scores, wedstrijdstatus en komende wedstrijden. Je hebt een gratis API-sleutel van football-data.org nodig om te beginnen.
+
+Maak flows die reageren op de wedstrijd. Laat je lampen oplichten wanneer je team scoort, ontvang een melding voor de aftrap, of dim de kamer wanneer de rust begint. De app ondersteunt alle belangrijke momenten: doelpunten, aftrap, rust, eindstanden en zelfs verlengingen. Werkt met teams uit de grote Europese competities waaronder de Premier League, Bundesliga, La Liga, Serie A, Eredivisie en Europese toernooien.

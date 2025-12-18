@@ -799,7 +799,11 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=team"
+            "filter": "driver_id=team",
+            "title": {
+              "en": "Team",
+              "nl": "Team"
+            }
           }
         ],
         "tokens": [
@@ -894,7 +898,11 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=team"
+            "filter": "driver_id=team",
+            "title": {
+              "en": "Team",
+              "nl": "Team"
+            }
           }
         ],
         "tokens": [
