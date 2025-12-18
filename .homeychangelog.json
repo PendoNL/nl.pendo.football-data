@@ -16,5 +16,8 @@
   },
   "1.0.5": {
     "en": "Added football-data.org logo as app icon"
+  },
+  "1.0.6": {
+    "en": "Fixed flow card description\""
   }
 }
