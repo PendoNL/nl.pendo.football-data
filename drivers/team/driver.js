@@ -71,7 +71,16 @@ class TeamDriver extends Homey.Driver {
         const device = args.device;
         const matchManager = this.homey.app.matchManager;
         const matchToday = matchManager?.getTeamMatchToday(device.teamId);
-        return matchToday !== null;
+        if (!matchToday) return false;
+
+        // Verify the match is actually today in the user's timezone
+        const timezone = this.homey.clock.getTimezone();
+        const now = new Date();
+        const todayStr = now.toLocaleDateString('en-CA', { timeZone: timezone });
+        const matchDate = new Date(matchToday.utcDate);
+        const matchDayStr = matchDate.toLocaleDateString('en-CA', { timeZone: timezone });
+
+        return todayStr === matchDayStr;
       });
 
     // match_within_hours condition
