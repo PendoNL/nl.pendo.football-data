@@ -31,5 +31,8 @@
   },
   "1.0.10": {
     "en": "Fixed a bug where the fetch match data card would return the date and time in UTC instead of the correct timezone"
+  },
+  "1.0.11": {
+    "en": "Fixed a bug in the isPlayingToday flow card"
   }
 }
