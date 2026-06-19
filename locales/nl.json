@@ -11,6 +11,10 @@
       }
     }
   },
+  "venue": {
+    "home": "(T)",
+    "away": "(U)"
+  },
   "capabilities": {
     "match_status": {
       "title": "Wedstrijd Status"

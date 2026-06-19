@@ -11,6 +11,10 @@
       }
     }
   },
+  "venue": {
+    "home": "(H)",
+    "away": "(A)"
+  },
   "capabilities": {
     "match_status": {
       "title": "Match Status"

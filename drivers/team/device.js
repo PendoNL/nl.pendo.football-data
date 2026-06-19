@@ -7,6 +7,7 @@ const {
   DEVICE_MATCH_STATUS,
   EVENTS,
 } = require('../../lib/constants');
+const { getLocale } = require('../../lib/locale');
 
 class TeamDevice extends Homey.Device {
   async onInit() {
@@ -376,7 +377,8 @@ class TeamDevice extends Homey.Device {
     this.log(`Calculated opponent: ${opponent}, isHome: ${isHome}`);
     const matchDate = new Date(match.utcDate);
     const timezone = this.homey.clock.getTimezone();
-    const kickoffTime = matchDate.toLocaleTimeString('nl-NL', {
+    const locale = getLocale(this.homey);
+    const kickoffTime = matchDate.toLocaleTimeString(locale, {
       hour: '2-digit',
       minute: '2-digit',
       timeZone: timezone,
@@ -505,18 +507,19 @@ class TeamDevice extends Homey.Device {
         const { opponent, isHome } = this.getOpponentInfo(nextMatch);
         const matchDate = new Date(nextMatch.utcDate);
         const timezone = this.homey.clock.getTimezone();
-        const dateStr = matchDate.toLocaleDateString('nl-NL', {
+        const locale = getLocale(this.homey);
+        const dateStr = matchDate.toLocaleDateString(locale, {
           weekday: 'short',
           day: 'numeric',
           month: 'short',
           timeZone: timezone,
         });
-        const timeStr = matchDate.toLocaleTimeString('nl-NL', {
+        const timeStr = matchDate.toLocaleTimeString(locale, {
           hour: '2-digit',
           minute: '2-digit',
           timeZone: timezone,
         });
-        const venue = isHome ? '(T)' : '(U)';
+        const venue = isHome ? this.homey.__('venue.home') : this.homey.__('venue.away');
         const nextMatchStr = `${opponent} ${venue} - ${dateStr} ${timeStr}`;
         await this.setCapabilityValue('next_match', nextMatchStr).catch(this.error);
       } else {

@@ -2,6 +2,7 @@
 
 const Homey = require('homey');
 const { DEVICE_MATCH_STATUS } = require('../../lib/constants');
+const { getLocale } = require('../../lib/locale');
 
 class TeamDriver extends Homey.Driver {
   async onInit() {
@@ -129,10 +130,10 @@ class TeamDriver extends Homey.Driver {
         const timezone = this.homey.clock.getTimezone();
         const daysUntil = Math.ceil((matchDate - new Date()) / 1000 / 60 / 60 / 24);
 
-        // Format date in Homey timezone (yyyy-mm-dd)
+        // Format date in Homey timezone (yyyy-mm-dd, locale-independent key)
         const dateStr = matchDate.toLocaleDateString('en-CA', { timeZone: timezone });
-        // Format time in Homey timezone
-        const timeStr = matchDate.toLocaleTimeString('nl-NL', {
+        // Format time in Homey timezone and language
+        const timeStr = matchDate.toLocaleTimeString(getLocale(this.homey), {
           hour: '2-digit',
           minute: '2-digit',
           timeZone: timezone,
