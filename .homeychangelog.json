@@ -34,5 +34,8 @@
   },
   "1.0.11": {
     "en": "Fixed a bug in the isPlayingToday flow card"
+  },
+  "1.0.12": {
+    "en": "Added Device localization - defaults to EN"
   }
 }
