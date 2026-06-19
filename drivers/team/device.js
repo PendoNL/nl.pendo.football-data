@@ -112,6 +112,7 @@ class TeamDevice extends Homey.Device {
       [EVENTS.MATCH_STARTS_SOON]: this.onMatchStartsSoon.bind(this),
       [EVENTS.MATCH_FINISHED]: this.onMatchFinished.bind(this),
       [EVENTS.MATCH_RESULT_CHANGED]: this.onMatchResultChanged.bind(this),
+      [EVENTS.SCORE_CHANGED]: this.onScoreChanged.bind(this),
     };
 
     for (const [event, handler] of Object.entries(this.eventHandlers)) {
@@ -396,6 +397,19 @@ class TeamDevice extends Homey.Device {
     };
     this.log(`Triggering match_starts_soon with tokens:`, tokens);
     await this.triggerFlow('match_starts_soon', tokens, { minutes: String(minutes) });
+  }
+
+  /**
+   * Keep the displayed score in sync with any score change (up or down).
+   * Goal flow cards are handled separately by onTeamScored/onTeamConceded.
+   */
+  async onScoreChanged(data) {
+    if (!this.isMyEvent(data)) return;
+
+    const { newScore } = data;
+    const score = this.formatScore(newScore.home, newScore.away);
+    this.log('Score changed:', score);
+    await this.setCapabilityValue('score', score).catch(this.error);
   }
 
   async onMatchResultChanged(data) {
