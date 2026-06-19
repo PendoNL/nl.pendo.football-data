@@ -37,5 +37,8 @@
   },
   "1.0.12": {
     "en": "Added Device localization - defaults to EN"
+  },
+  "1.0.13": {
+    "en": "Improved score registration after final whistle or var decisions"
   }
 }
